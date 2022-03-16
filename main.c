@@ -68,6 +68,7 @@ int main( void ) {
       
     }
 
-
+    delete_list(&int_list);
+    delete_list(&double_list);
     return 0;
 }

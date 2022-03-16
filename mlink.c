@@ -62,21 +62,38 @@ int find(mlink_t list_manage, const void *compare) {
     return r;
 }
 
-void delete_list(mlink_t *m) {
+void delete_list(mlink_t *list_manage) {
 
+    for(; NULL != list_manage->root; ) {
 
+        node_t * temp = list_manage->root->next;
+
+        free( list_manage->root->data );
+
+        free( list_manage->root );
+
+        list_manage->root = temp;
+
+    }
 }
 
 
 iter_t get_iter(mlink_t *list_manage) {
+
     iter_t iter;
+    
     iter.root = list_manage->root;
+
     iter.data = list_manage->root->data;
+
     return iter;
 }
 
 void iterate(iter_t *iter) {
+
     iter->root = iter->root->next;
+
     if(NULL != iter->root)
         iter->data = iter->root->data;
+
 }

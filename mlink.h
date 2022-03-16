@@ -23,6 +23,7 @@ typedef struct iter_t {
 
 int append(mlink_t * list_manage, const void* data);
 int find(mlink_t list_manage, const void* compare);
+void delete_list(mlink_t *list_manage);
 
 iter_t get_iter(mlink_t *list_manage);
 void iterate(iter_t *iter);
