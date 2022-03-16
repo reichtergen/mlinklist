@@ -12,13 +12,14 @@ typedef struct node_t {
 
 typedef struct manage {
     node_t *root, *tail;
+    size_t byte_size;
 } manage;
 
 
 typedef node_t iter_t;
 
-int append(manage * list_manager, const void* data, size_t byte_size);
-int find(manage list_manager, const void* compare, size_t byte_size);
+int append(manage * list_manager, const void* data);
+int find(manage list_manager, const void* compare);
 
 void iterate(manage *iter);
 

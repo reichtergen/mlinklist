@@ -1,7 +1,7 @@
 #include "mlink.h"
 
 
-int append(manage *list_manager, const void *data, size_t byte_size) {
+int append(manage *list_manager, const void *data) {
 
     if ( NULL == list_manager->root ) {
         
@@ -10,7 +10,7 @@ int append(manage *list_manager, const void *data, size_t byte_size) {
         if ( NULL == list_manager->root )
             return -1;
 
-        list_manager->root->data = malloc( byte_size);
+        list_manager->root->data = malloc( list_manager->byte_size);
 
         if ( NULL == list_manager->root->data ) {
 
@@ -19,7 +19,7 @@ int append(manage *list_manager, const void *data, size_t byte_size) {
             return -1;
         }
 
-        memcpy(list_manager->root->data, data, byte_size);
+        memcpy(list_manager->root->data, data, list_manager->byte_size);
 
         list_manager->root->next = NULL;
         list_manager->tail = list_manager->root;
@@ -29,7 +29,7 @@ int append(manage *list_manager, const void *data, size_t byte_size) {
         if ( NULL == temp )
             return -1;
 
-        temp->data = malloc( byte_size);
+        temp->data = malloc( list_manager->byte_size);
 
         if ( NULL == temp->data ) {
 
@@ -38,7 +38,7 @@ int append(manage *list_manager, const void *data, size_t byte_size) {
         }
 
         temp->next = NULL;
-        memcpy(temp->data, data, byte_size);
+        memcpy(temp->data, data, list_manager->byte_size);
 
         list_manager->tail->next = temp;
         list_manager->tail = temp;
@@ -49,11 +49,11 @@ int append(manage *list_manager, const void *data, size_t byte_size) {
 }
 
 
-int find(manage list_manager, const void *compare, size_t byte_size) {
+int find(manage list_manager, const void *compare) {
     int r ;
     for(;list_manager.root != NULL;) {
         
-        r = memcmp(list_manager.root->data , compare, byte_size);
+        r = memcmp(list_manager.root->data , compare, list_manager.byte_size);
         if(!r){
             return r;
         }

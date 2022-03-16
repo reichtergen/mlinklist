@@ -6,19 +6,19 @@ int main( void ) {
 
     
 
-    manage int_list = {.root = NULL, .tail = NULL};
+    manage int_list = {.root = NULL, .tail = NULL, .byte_size = sizeof(int) };
 
     int number = 25;
 
-    append(&int_list, &number, sizeof(int)); 
+    append(&int_list, &number); 
     number = 36;
-    append(&int_list, &number, sizeof(int)); 
+    append(&int_list, &number); 
     number = 21;
-    append(&int_list, &number, sizeof(int)); 
+    append(&int_list, &number); 
     number = 24;
-    append(&int_list, &number, sizeof(int)); 
+    append(&int_list, &number); 
     number = 77;
-    append(&int_list, &number, sizeof(int)); 
+    append(&int_list, &number); 
 
 
     
