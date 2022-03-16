@@ -1,35 +1,35 @@
 #include "mlink.h"
 
 
-int append(manage *list_manager, const void *data) {
+int append(manage_t *list_manage, const void *data) {
 
-    if ( NULL == list_manager->root ) {
+    if ( NULL == list_manage->root ) {
         
-        list_manager->root = malloc( sizeof( node_t ) );
+        list_manage->root = malloc( sizeof( node_t ) );
 
-        if ( NULL == list_manager->root )
+        if ( NULL == list_manage->root )
             return -1;
 
-        list_manager->root->data = malloc( list_manager->byte_size);
+        list_manage->root->data = malloc( list_manage->byte_size);
 
-        if ( NULL == list_manager->root->data ) {
+        if ( NULL == list_manage->root->data ) {
 
-            free( list_manager->root );
-            list_manager->root = NULL;
+            free( list_manage->root );
+            list_manage->root = NULL;
             return -1;
         }
 
-        memcpy(list_manager->root->data, data, list_manager->byte_size);
+        memcpy(list_manage->root->data, data, list_manage->byte_size);
 
-        list_manager->root->next = NULL;
-        list_manager->tail = list_manager->root;
+        list_manage->root->next = NULL;
+        list_manage->tail = list_manage->root;
 
     }else {
         node_t *temp =  malloc( sizeof(node_t) );
         if ( NULL == temp )
             return -1;
 
-        temp->data = malloc( list_manager->byte_size);
+        temp->data = malloc( list_manage->byte_size);
 
         if ( NULL == temp->data ) {
 
@@ -38,10 +38,10 @@ int append(manage *list_manager, const void *data) {
         }
 
         temp->next = NULL;
-        memcpy(temp->data, data, list_manager->byte_size);
+        memcpy(temp->data, data, list_manage->byte_size);
 
-        list_manager->tail->next = temp;
-        list_manager->tail = temp;
+        list_manage->tail->next = temp;
+        list_manage->tail = temp;
 
     }
 
@@ -49,20 +49,28 @@ int append(manage *list_manager, const void *data) {
 }
 
 
-int find(manage list_manager, const void *compare) {
+int find(manage_t list_manage, const void *compare) {
     int r ;
-    for(; NULL != list_manager.root; ) {
+    for(; NULL != list_manage.root; ) {
         
-        r = memcmp(list_manager.root->data , compare, list_manager.byte_size);
+        r = memcmp(list_manage.root->data , compare, list_manage.byte_size);
         if(!r)
             return r;
 
-        list_manager.root = list_manager.root->next;
+        list_manage.root = list_manage.root->next;
     }
     return r;
 }
 
+iter_t get_iter(manage_t *list_manage) {
+    iter_t iter;
+    iter.root = list_manage->root;
+    iter.data = list_manage->root->data;
+    return iter;
+}
 
-void iterate(manage *iter) {
+void iterate(iter_t *iter) {
     iter->root = iter->root->next;
+    if(NULL != iter->root)
+        iter->data = iter->root->data;
 }
