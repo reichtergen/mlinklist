@@ -1,0 +1,1 @@
+A linked list implementation that supports multiple data structures. It works through pointers and is managed through its own iter_t and manage_t structures. It has special functions to add, delete and find data. You can check the main.c file for a detailed example.
