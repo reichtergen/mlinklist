@@ -1,7 +1,7 @@
 #include "mlink.h"
 
 
-int append(manage_t *list_manage, const void *data) {
+int append(mlink_t *list_manage, const void *data) {
 
     if ( NULL == list_manage->root ) {
         
@@ -49,7 +49,7 @@ int append(manage_t *list_manage, const void *data) {
 }
 
 
-int find(manage_t list_manage, const void *compare) {
+int find(mlink_t list_manage, const void *compare) {
     int r ;
     for(; NULL != list_manage.root; ) {
         
@@ -62,7 +62,13 @@ int find(manage_t list_manage, const void *compare) {
     return r;
 }
 
-iter_t get_iter(manage_t *list_manage) {
+void delete_list(mlink_t *m) {
+
+
+}
+
+
+iter_t get_iter(mlink_t *list_manage) {
     iter_t iter;
     iter.root = list_manage->root;
     iter.data = list_manage->root->data;

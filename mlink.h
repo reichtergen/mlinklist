@@ -10,10 +10,10 @@ typedef struct node_t {
     struct node_t *next;
 } node_t;
 
-typedef struct manage_t {
+typedef struct mlink_t {
     node_t *root, *tail;
     size_t byte_size;
-} manage_t;
+} mlink_t;
 
 typedef struct iter_t {
     node_t *root;
@@ -21,10 +21,10 @@ typedef struct iter_t {
 } iter_t;
 
 
-int append(manage_t * list_manage, const void* data);
-int find(manage_t list_manage, const void* compare);
+int append(mlink_t * list_manage, const void* data);
+int find(mlink_t list_manage, const void* compare);
 
-iter_t get_iter(manage_t *list_manage);
+iter_t get_iter(mlink_t *list_manage);
 void iterate(iter_t *iter);
 
 #endif

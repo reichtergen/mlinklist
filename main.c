@@ -5,7 +5,7 @@
 /*
 * Wrapper function for int
 */
-int int_append(manage_t *m, int number)
+int int_append(mlink_t *m, int number)
 {
     return append(m, &number); 
 }
@@ -13,7 +13,7 @@ int int_append(manage_t *m, int number)
 /*
 * Wrapper function for double
 */
-int double_append(manage_t *m, double number)
+int double_append(mlink_t *m, double number)
 {
     return append(m, &number); 
 }
@@ -26,7 +26,7 @@ int main( void ) {
     * Example int
     */
     
-    manage_t int_list = {.root = NULL, .tail = NULL, .byte_size = sizeof(int) };
+    mlink_t int_list = {.root = NULL, .tail = NULL, .byte_size = sizeof(int) };
 
     int number = 25;
 
@@ -50,7 +50,7 @@ int main( void ) {
     * Example double
     */
 
-    manage_t double_list = {.root = NULL, .tail = NULL, .byte_size = sizeof(double) };
+    mlink_t double_list = {.root = NULL, .tail = NULL, .byte_size = sizeof(double) };
 
     double number2 = 14.29349;
 
