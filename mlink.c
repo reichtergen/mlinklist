@@ -33,7 +33,7 @@ int append(manage *list_manager, const void *data, size_t byte_size) {
 
         if ( NULL == temp->data ) {
 
-            free( temp->data );
+            free( temp );
             return -1;
         }
 
