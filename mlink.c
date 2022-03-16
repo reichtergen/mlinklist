@@ -51,12 +51,12 @@ int append(manage *list_manager, const void *data) {
 
 int find(manage list_manager, const void *compare) {
     int r ;
-    for(;list_manager.root != NULL;) {
+    for(; NULL != list_manager.root; ) {
         
         r = memcmp(list_manager.root->data , compare, list_manager.byte_size);
-        if(!r){
+        if(!r)
             return r;
-        }
+
         list_manager.root = list_manager.root->next;
     }
     return r;
