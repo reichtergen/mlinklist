@@ -68,7 +68,22 @@ int main( void ) {
       
     }
 
+    mlink_t string_list = {.root = NULL, .tail = NULL, sizeof(char)*50};
+
+    append(&string_list, "This is test message!");
+    append(&string_list, "Can you read me?");
+    append(&string_list, "Write a dolor lorem ipsum.");
+
+
+    for( iter_t iter = get_iter(&string_list); NULL != iter.root; iterate(&iter)) {
+        
+        printf("char array: %s\n", (char*)iter.data);
+      
+    }
+
     delete_list(&int_list);
     delete_list(&double_list);
+    delete_list(&string_list);
+
     return 0;
 }
